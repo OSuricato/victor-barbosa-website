@@ -14,7 +14,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def new?
-    create?
+    user && user.email == 'victor@victorbarbosa.com'
   end
 
   def update?

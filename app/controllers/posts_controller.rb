@@ -19,6 +19,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    authorize @post
   end
 
   def edit
@@ -26,17 +27,22 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user = current_user  # assign the current user to the post
+    authorize @post
 
     if @post.save
       redirect_to @post, notice: 'Post was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.js
+      end
     else
       render :edit
     end
@@ -44,7 +50,10 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: 'Post was successfully destroyed.'
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'Post was successfully destroyed.' }
+      format.js
+    end
   end
 
   private
@@ -54,7 +63,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :category, :link)
+    params.require(:post).permit(:title, :content, :link, :post_category_id)
   end
 
   def check_user
