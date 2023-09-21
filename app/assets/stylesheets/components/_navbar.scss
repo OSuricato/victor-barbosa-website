@@ -10,3 +10,9 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+@media (max-width: 991px) {
+  .sidebar {
+    backdrop-filter: blur(10px);
+  }
+}
