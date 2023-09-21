@@ -1,25 +1,74 @@
 class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :update, :destroy]
-    # GET /posts
-    # GET /posts.json
-    def index
-      if params[:category]
-        @posts = Post.where(category: params[:category])
-      else
-        @posts = Post.all
-      end
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :check_user, only: [:new, :create, :edit, :update, :destroy]
+
+  def index
+    @posts = Post.all
+  end
+
+  def blog
+    @posts = Post.joins(:post_category).where(post_categories: { name: 'Blog' })
+  end
+
+  def portfolio
+    @posts = Post.joins(:post_category).where(post_categories: { name: 'Portfolio' })
+  end
+
+  def show
+  end
+
+  def new
+    @post = Post.new
+    authorize @post
+  end
+
+  def edit
+  end
+
+  def create
+    @post = Post.new(post_params)
+    @post.user = current_user  # assign the current user to the post
+    authorize @post
+
+    if @post.save
+      redirect_to @post, notice: 'Post was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
     end
+  end
 
-    # Other controller actions...
-
-    private
-      # Use callbacks to share common setup or constraints between actions.
-      def set_post
-        @post = Post.find(params[:id])
+  def update
+    if @post.update(post_params)
+      respond_to do |format|
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.js
       end
+    else
+      render :edit
+    end
+  end
 
-      # Never trust parameters from the scary internet, only allow the white list through.
-      def post_params
-        params.require(:post).permit(:title, :content, :category)
-      end
+  def destroy
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'Post was successfully destroyed.' }
+      format.js
+    end
+  end
+
+  private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :content, :link, :post_category_id)
+  end
+
+  def check_user
+    unless current_user && current_user.email == 'victor@victorbarbosa.com'
+      redirect_to root_path, alert: 'You are not authorized to perform this action.'
+    end
+  end
 end

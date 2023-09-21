@@ -1,0 +1,59 @@
+<!-- app/views/posts/show.html.erb -->
+<div class="container" data-controller="post">
+  <div data-post-target="display">
+    <h1><%= @post.title %></h1>
+    <p>Posted by <%= @post.user.email %> on <%= @post.created_at.strftime("%B %d, %Y") %></p>
+    <p><%= link_to @post.link, @post.link %></p>
+    <p><%= @post.content %></p>
+    <p>Category: <%= @post.post_category.name %></p>
+
+    <% if policy(@post).edit? %>
+      <%= link_to 'Edit', '#', data: { action: 'click->post#edit' } %>
+    <% end %>
+
+    <% if policy(@post).destroy? %>
+      <%= link_to 'Delete', @post, data:{turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    <% end %>
+  </div>
+
+  <div data-post-target="form" style="display: none;">
+    <%= simple_form_for(@post, remote: true) do |f| %>
+      <%= f.input :title, label: 'Title' %>
+      <%= f.input :content, label: 'Content' %>
+      <%= f.input :link, label: 'Link' %>
+      <%= f.association :post_category, label: 'Post Category', collection: PostCategory.all, prompt: 'Select a Category' %>
+      <%= f.button :submit, 'Update Post' %>
+    <% end %>
+  </div>
+
+  <h2>Comments</h2>
+
+  <%= simple_form_for([@post, Comment.new]) do |f| %>
+    <%= f.input :content, label: 'New Comment' %>
+    <%= f.button :submit %>
+  <% end %>
+
+  <% @post.comments.each do |comment| %>
+    <div data-controller="comment">
+      <div data-comment-target="display" id="comment-<%= comment.id %>">
+        <p><%= comment.content %></p>
+        <p>Posted by <%= comment.user.email %> on <%= comment.created_at.strftime("%B %d, %Y") %></p>
+
+        <% if policy(comment).edit? %>
+          <%= link_to 'Edit', '#', data: { action: 'click->comment#edit' } %>
+        <% end %>
+
+        <% if policy(comment).destroy? %>
+          <%= link_to 'Delete', post_comment_path(@post, comment), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <% end %>
+      </div>
+
+      <div data-comment-target="form" style="display: none;">
+        <%= simple_form_for([@post, comment], remote: true) do |f| %>
+          <%= f.input :content, label: 'Edit Comment' %>
+          <%= f.button :submit, 'Update Comment' %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
