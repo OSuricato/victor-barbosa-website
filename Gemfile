@@ -83,3 +83,6 @@ gem "faker"
 
 # for authorizations of who can create/edit posts and comments
 gem "pundit"
+
+# for uploading images to cloudinary
+gem "cloudinary"
