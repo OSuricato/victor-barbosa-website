@@ -4,6 +4,9 @@
     <h1><%= @post.title %></h1>
     <p>Posted by <%= @post.user.email %> on <%= @post.created_at.strftime("%B %d, %Y") %></p>
     <p><%= link_to @post.link, @post.link %></p>
+    <% @post.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
     <p><%= @post.content %></p>
     <p>Category: <%= @post.post_category.name %></p>
 
@@ -21,6 +24,7 @@
       <%= f.input :title, label: 'Title' %>
       <%= f.input :content, label: 'Content' %>
       <%= f.input :link, label: 'Link' %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.association :post_category, label: 'Post Category', collection: PostCategory.all, prompt: 'Select a Category' %>
       <%= f.button :submit, 'Update Post' %>
     <% end %>
