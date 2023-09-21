@@ -1,0 +1,19 @@
+class CommentPolicy < ApplicationPolicy
+  class Scope < Scope
+    def resolve
+      scope.all
+    end
+  end
+
+  def create?
+    user.present?
+  end
+
+  def update?
+    user == record.user || user.email == 'victor@victorbarbosa.com'
+  end
+
+  def destroy?
+    user == record.user || user.email == 'victor@victorbarbosa.com'
+  end
+end

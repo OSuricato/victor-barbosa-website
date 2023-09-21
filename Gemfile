@@ -77,3 +77,9 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+# faker used for seeding database with fake data
+gem "faker"
+
+# for authorizations of who can create/edit posts and comments
+gem "pundit"
