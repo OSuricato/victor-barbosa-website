@@ -7,11 +7,11 @@ class PostsController < ApplicationController
   end
 
   def blog
-    @posts = Post.joins(:post_category).where(post_categories: { name: 'Blog' })
+    @pagy, @posts = pagy(Post.joins(:post_category).where(post_categories: { name: 'Blog' }))
   end
 
   def portfolio
-    @posts = Post.joins(:post_category).where(post_categories: { name: 'Portfolio' })
+    @pagy, @posts = pagy(Post.joins(:post_category).where(post_categories: { name: 'Portfolio' }))
   end
 
   def show

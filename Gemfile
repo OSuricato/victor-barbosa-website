@@ -91,3 +91,6 @@ gem "cloudinary"
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
+
+# Pagination of blog posts
+gem 'pagy'
