@@ -86,3 +86,11 @@ gem "pundit"
 
 # for uploading images to cloudinary
 gem "cloudinary"
+
+# For using google sign in
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
+
+# Pagination of blog posts
+gem 'pagy'
