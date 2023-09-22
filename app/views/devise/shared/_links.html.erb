@@ -20,11 +20,13 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= form_for "Login",
-        url: omniauth_authorize_path(resource_name, provider),
-        method: :post,
-        data: { turbo: false } do |f| %>
-      <%= f.submit "Login", type: "image", src: url_for("/assets/btn_google_signin_light_normal_web.png") %>
+    <%= form_for "Login",
+      url: omniauth_authorize_path(resource_name, provider),
+      method: :post,
+      data: { turbo: false } do |f| %>
+      <%= button_tag(type: 'submit', style: 'border: none;') do %>
+        <%= image_tag("btn_google_signin_light_normal_web.png", alt: "Login") %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
