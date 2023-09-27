@@ -63,8 +63,9 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :link, :post_category_id, photos: [])
+    params.require(:post).permit(:title, :content, :link, :post_category_id, { tag_ids: [] }, photos: [])
   end
+
 
   def check_user
     unless current_user && current_user.email == 'victor@victorbarbosa.com'
