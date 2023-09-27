@@ -1,5 +1,7 @@
 .footer {
   background: #eae6e5;
+  color: green;
+  background-color: #8F8073;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,4 +25,26 @@
 }
 .footer .fa-heart {
   color: #D23333;
+}
+
+.custom-shape-divider-bottom-1695755278 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1695755278 svg {
+  position: relative;
+  display: block;
+  width: calc(108% + 1.3px);
+  height: 52px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1695755278 .shape-fill {
+  fill: #8F8073;
 }

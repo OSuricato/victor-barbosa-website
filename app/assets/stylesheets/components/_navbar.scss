@@ -1,5 +1,11 @@
 .navbar {
-  background-color: #eae6e5;
+  background-color: #000000;
+  a {
+    color: #ffffff;
+    &:hover {
+      color: #ffffff;
+    }
+  }
 }
 
 .navbar-brand img {
@@ -10,4 +16,32 @@
   .sidebar {
     backdrop-filter: blur(10px);
   }
+}
+
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 20vw;
+}
+
+.custom-shape-divider-top-1695754255 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1695754255 svg {
+  position: relative;
+  display: block;
+  width: calc(104% + 1.3px);
+  height: 38px;
+}
+
+.custom-shape-divider-top-1695754255 .shape-fill {
+  fill: #1A7F5F;
 }

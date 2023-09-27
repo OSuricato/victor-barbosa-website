@@ -1,1 +1,178 @@
-// Specific CSS for your home-page
+.home-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.home-info, .home-image {
+  flex: 1 0 20em;
+  margin: 1em;
+}
+
+.home-info h2 {
+  font-weight: bold;
+}
+
+.home-image img {
+  border-radius: 10px;
+  width: 75%; /* Adjust this value to your liking */
+  height: auto;
+  object-fit: cover;
+}
+
+
+// style for shape divider home-links
+.custom-shape-divider-bottom-1695774642 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1695774642 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 31px;
+}
+
+.custom-shape-divider-bottom-1695774642 .shape-fill {
+  fill: #EAE6E5;
+}
+
+.home-links {
+  h2 {
+    font-weight: bold;
+  }
+}
+
+.home-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 100px;
+}
+
+.home-portfolio, .home-blog, .home-servi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.home-buttons img {
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+  object-fit: contain;
+  margin: 1em;
+}
+
+@media (max-width: 600px) {
+  .home-portfolio, .home-blog, .home-servi {
+    width: 100%;
+  }
+}
+
+// style for transition between links and story
+
+.custom-shape-divider-bottom-1695777348 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1695777348 svg {
+  position: relative;
+  display: block;
+  width: calc(159% + 1.3px);
+  height: 52px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1695777348 .shape-fill {
+  fill: #8F8073;
+}
+
+
+.home-story, .home-image {
+  flex: 1 0 20em;
+  margin: 1em;
+}
+
+.home-story {
+  color: #fff;
+  h2 {
+    font-weight: bold;
+  }
+}
+
+// Transition into recent blog posts
+
+.custom-shape-divider-bottom-1695777949 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1695777949 svg {
+  position: relative;
+  display: block;
+  width: calc(139% + 1.3px);
+  height: 44px;
+}
+
+.custom-shape-divider-bottom-1695777949 .shape-fill {
+  fill: #5B9279;
+}
+
+.home-blog-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+}
+
+.home-blog-posts {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-blog-post {
+  width: 30%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.home-blog-post img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.home-blog-post h3 {
+  font-size: 1.2em;
+  margin: 0.5em 0;
+}
+
+.home-blog-post p {
+  font-size: 1em;
+  margin: 0.5em 0;
+}
