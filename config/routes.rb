@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-  
+
   get 'about', to: 'pages#about', as: 'about'
   get 'contact', to: 'pages#contact', as: 'contact'
   get 'blog', to: 'posts#blog', as: 'blog'
@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
-
   resources :post_categories
+  resources :contacts, only: [:new, :create]
 end
