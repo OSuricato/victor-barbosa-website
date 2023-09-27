@@ -10,10 +10,10 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.user || user.email == 'victor@victorbarbosa.com'
+    user.present? && (user == record.user || user.email == 'victor@victorbarbosa.com')
   end
 
   def destroy?
-    user == record.user || user.email == 'victor@victorbarbosa.com'
+    user.present? && (user == record.user || user.email == 'victor@victorbarbosa.com')
   end
 end
