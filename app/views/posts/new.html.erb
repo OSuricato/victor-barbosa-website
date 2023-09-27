@@ -1,20 +1,26 @@
-<%= simple_form_for(@post) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :content %>
-  <%= f.input :link %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.association :post_category, collection: PostCategory.all, prompt: 'Select a Category' %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container mb-3">
+  <div class="row justify-content-center">
+    <div class="form-login">
+      <%= simple_form_for(@post) do |f| %>
+        <%= f.input :title %>
+        <%= f.input :content %>
+        <%= f.input :link %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.association :post_category, collection: PostCategory.all, prompt: 'Select a Category' %>
+        <%= f.button :submit, class:"btn btn-info" %>
+      <% end %>
 
-<% if @post.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <% if @post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-    <ul>
-    <% @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
+          <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
