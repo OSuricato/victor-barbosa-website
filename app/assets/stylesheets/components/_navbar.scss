@@ -12,6 +12,11 @@
   width: 40px;
 }
 
+.show {
+  background-color: black
+}
+
+
 @media (max-width: 991px) {
   .sidebar {
     backdrop-filter: blur(10px);

@@ -1,8 +1,56 @@
-<%= simple_form_for @contact do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :email %>
-  <%= f.input :subject %>
-  <%= f.input :message %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container mb-3">
+  <div class="row justify-content-center">
+      <div class="form-container">
+        <div class="contact-text">
+          <h2>Let's connect!</h2>
+          <p>If you have questions, want to work together, wish to know more about me and my work or just feel like chatting!</p>
+          <p>Fill out the form or write to victor@victorbarbosa.com</p>
+        </div>
+        <div class="form-login">
+          <%= simple_form_for @contact do |f| %>
+            <div class="name">
+              <div class="input"><%= f.input :first_name %></div>
+              <div class="input"><%= f.input :last_name %></div>
+            </div>
+            <%= f.input :email %>
+            <%= f.input :subject %>
+            <%= f.input :message %>
+            <%= f.button :submit, class:"btn btn-info"%>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>
+
+<%#
+<!-- Widget em linha do Calendly - início -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/victor_barbosa/30min?primary_color=1a7f5f" style="min-width:320px;height:700px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<!-- Widget em linha do Calendly - fim --> %>
+
+<style>
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name .input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.name .input:last-child {
+  margin-right: 0;
+}
+
+.contact-text {
+  flex: 1;
+  margin-right: 20px;
+}
+</style>
