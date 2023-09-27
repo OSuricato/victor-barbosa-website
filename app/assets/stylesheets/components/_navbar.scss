@@ -3,17 +3,22 @@
   a {
     color: #ffffff;
     &:hover {
-      color: #000000;
+      color: #ffffff;
     }
   }
 }
 
 .navbar-brand img {
-  width: 40px;
+  width: 64px;
 }
 
 .show {
-  background-color: black
+  background-color: black;
+  a {
+    &:hover {
+      color: #000000;
+    }
+  }
 }
 
 
