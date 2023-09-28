@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'pages#contact', as: 'contact'
   get 'blog', to: 'posts#blog', as: 'blog'
   get 'portfolio', to: 'posts#portfolio', as: 'portfolio'
+  get 'tags/:tag', to: 'posts#tag', as: :tag
 
 
   resources :users do

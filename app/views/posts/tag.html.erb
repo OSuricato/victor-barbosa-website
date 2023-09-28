@@ -1,6 +1,7 @@
-<div class="container blog">
+<div class="container">
+  <h1><%= @tag.name %></h1>
+
   <div class="posts">
-    <h1>Blog</h1>
     <% @posts.each do |post| %>
       <div class="post">
         <div class="post-content">
@@ -21,14 +22,6 @@
               <%= link_to tag.name, tag_path(tag.name), class:"btn btn-info" %>
             <% end %>
       </div>
-    <% end %>
-    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
-  </div>
-
-  <div class="tags">
-    <h2>Tags</h2>
-    <% Tag.all.each do |tag| %>
-      <%= link_to tag.name, tag_path(tag.name), class: "btn btn-primary", style: "margin: 2px;" %>
     <% end %>
   </div>
 </div>
