@@ -1,13 +1,31 @@
-<div class="container">
-  <h1>Portfolio</h1>
+<div class="container portfolio">
+  <div class="posts">
+    <h1>My Portfolio</h1>
+    <% @posts.each do |post| %>
+      <div class="post">
+        <div class="post-title">
+          <h3><%= link_to post.title, post_path(post) %></h3>
+        </div>
+        <div class="post-image">
+            <% post.photos.each do |photo| %>
+              <% if photo.present? %>
+                <%= cl_image_tag photo.key, height: 268, width: 400, crop: :fill %>
+              <% end %>
+            <% end %>
+        </div>
+        <div class="post-info">
+          <p><%= post.content.truncate(250) %></p>
+          <div class="post-data">
+            <i class="fa-solid fa-calendar"></i> • <%= post.created_at.strftime("%b %Y") %>
+            <% post.tags.each do |tag| %>
+              <%= link_to tag.name, tag_path(tag.name), class:"btn btn-info tag-button" %>
+            <% end %>
+          </div>
+        </div>
 
-  <% @posts.each do |post| %>
-    <div class="post">
-      <h2><%= link_to post.title, post_path(post) %></h2>
-      <p><%= post.content %></p>
-      <p><%= post.post_category.name %></p>
-      <p><%= link_to 'Read more', post_path(post) %></p>
-    </div>
-  <% end %>
-<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+
+      </div>
+    <% end %>
+    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+  </div>
 </div>

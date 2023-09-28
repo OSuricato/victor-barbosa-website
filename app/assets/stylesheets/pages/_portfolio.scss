@@ -1,0 +1,65 @@
+.portfolio {
+  display: flex;
+  justify-content: space-between;
+  a {
+    text-decoration: none;
+  }
+}
+
+.posts {
+  width: 70%;
+  overflow: auto;
+  height: 100vh; /* Adjust this value as needed */
+}
+
+.post {
+  margin: 0 0 20px 0;
+}
+
+.post-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-image {
+  img {
+    border-radius: 8px;
+  }
+}
+
+.posts::-webkit-scrollbar {
+  display: none;
+}
+
+
+.tags {
+  position: sticky;
+  top: 0; /* Adjust this value according to the height of your navbar */
+  width: 30%;
+  margin-left: 20px;
+}
+
+
+.post-data {
+  display: flex;
+  align-items: center;
+  a {
+    margin-left: 4px;
+  }
+}
+
+.tag-button {
+  padding: 5px 10px; /* Adjust as needed */
+  font-size: 12px; /* Adjust as needed */
+}
+
+// mobile responsive
+@media screen and (max-width: 600px) {
+  .portfolio {
+    flex-direction: column;
+  }
+
+  .tags {
+    position: static;
+  }
+}
