@@ -40,6 +40,19 @@
 }
 
 
+.post-data {
+  display: flex;
+  align-items: center;
+  a {
+    margin-left: 4px;
+  }
+}
+
+.tag-button {
+  padding: 5px 10px; /* Adjust as needed */
+  font-size: 12px; /* Adjust as needed */
+}
+
 // mobile responsive
 @media screen and (max-width: 600px) {
   .blog {

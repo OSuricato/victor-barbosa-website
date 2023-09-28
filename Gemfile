@@ -94,3 +94,5 @@ gem 'omniauth-rails_csrf_protection'
 
 # Pagination of blog posts
 gem 'pagy'
+
+gem "readingtime"
