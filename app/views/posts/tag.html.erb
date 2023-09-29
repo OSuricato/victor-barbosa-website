@@ -7,7 +7,7 @@
         <div class="post-content">
           <div class="post-info">
             <h3><%= link_to post.title, post_path(post) %></h3>
-            <p><%= post.content.truncate(250) %></p>
+            <p><%= post.content.body.to_plain_text.truncate(250) if post.content.body.present? %></p>
             <p><%= link_to 'Read more', post_path(post) %></p>
           </div>
           <div class="post-image">

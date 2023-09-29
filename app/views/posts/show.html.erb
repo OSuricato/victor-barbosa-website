@@ -4,6 +4,9 @@
     <h1><%= @post.title %></h1>
     <p><i class="fa-solid fa-calendar"></i> <%= @post.created_at.strftime("%B %d, %Y") %></p>
     <p><%= link_to @post.link, @post.link %></p>
+    <% if @post.video_url.present? %>
+      <iframe width="560" height="315" src="<%= @post.video_url %>" frameborder="0" allowfullscreen></iframe>
+    <% end %>
     <% @post.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
@@ -23,6 +26,7 @@
       <%= f.input :title, label: 'Title' %>
       <%= f.rich_text_area :content %>
       <%= f.input :link, label: 'Link' %>
+      <%= f.input :video_url %>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.association :post_category, label: 'Post Category', collection: PostCategory.all, prompt: 'Select a Category' %>
       <%= f.button :submit, 'Update Post', class:"btn btn-primary" %>
@@ -30,7 +34,7 @@
   </div>
 
   <div class="container" data-controller="comments">
-    <button data-action="click->comments#toggle" class="btn btn-primary">Responses</button>
+    <button data-action="click->comments#toggle" class="btn btn-primary mt-3">Responses</button>
 
     <div data-comments-target="section" style="display: none;">
       <h3>Comments</h3>
