@@ -14,7 +14,7 @@
             <% end %>
         </div>
         <div class="post-info">
-          <p><%= post.content.truncate(250) %></p>
+          <p><%= post.content.body.to_plain_text.truncate(250) %></p>
           <div class="post-data">
             <i class="fa-solid fa-calendar"></i> • <%= post.created_at.strftime("%b %Y") %>
             <% post.tags.each do |tag| %>

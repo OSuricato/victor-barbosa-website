@@ -6,10 +6,11 @@
         <div class="post-content">
           <div class="post-info">
             <h3><%= link_to post.title, post_path(post) %></h3>
-            <p><%= post.content.truncate(250) %></p>
+            <p><%= post.content.body.to_plain_text.truncate(250) if post.content.body.present? %></p>
             <div class="post-data">
               <i class="fa-solid fa-calendar"></i> • <%= post.created_at.strftime("%b %Y") %>
-              <i class="fa-solid fa-stopwatch"></i> • <%= post.content.reading_time :format => :approx %>
+              <i class="fa-solid fa-stopwatch"></i> • <%= post.content.body.to_plain_text.reading_time :format => :approx if post.content.body.present? %>
+
               <% post.tags.each do |tag| %>
                 <%= link_to tag.name, tag_path(tag.name), class:"btn btn-info tag-button" %>
               <% end %>

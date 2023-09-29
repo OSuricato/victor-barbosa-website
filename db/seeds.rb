@@ -44,7 +44,7 @@ tags = Tag.create([
 5.times do
   blog = Post.create(
     title: Faker::Lorem.sentence(word_count: 3),
-    content: Faker::Lorem.paragraph(sentence_count: 2),
+    content: ActionText::Content.new(Faker::Lorem.paragraph(sentence_count: 2)),
     post_category: post_categories.find { |pc| pc.name == 'Blog' },
     link: Faker::Internet.url,
     user: user,
@@ -56,13 +56,14 @@ end
 5.times do
   portfolio = Post.create(
     title: Faker::Lorem.sentence(word_count: 3),
-    content: Faker::Lorem.paragraph(sentence_count: 2),
+    content: ActionText::Content.new(Faker::Lorem.paragraph(sentence_count: 2)),
     post_category: post_categories.find { |pc| pc.name == 'Portfolio' },
     link: Faker::Internet.url,
     user: user,
     tag_ids: tags.sample(3).map(&:id)  # Assign 3 random tags to each post
   )
 end
+
 
 # Create comments
 users = []

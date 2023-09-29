@@ -9,4 +9,5 @@ class Post < ApplicationRecord
   # tagging system
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
-  end
+  has_rich_text :content
+end

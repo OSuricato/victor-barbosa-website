@@ -11,6 +11,11 @@
 @import "components/index";
 @import "pages/index";
 
+// Post text formatting
+@import "trix";
+@import "actiontext";
+
+
 
 body {
   display: flex;

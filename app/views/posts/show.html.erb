@@ -7,7 +7,7 @@
     <% @post.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
-    <p><%= @post.content %></p>
+    <%= @post.content.body %>
 
     <% if policy(@post).edit? %>
       <%= link_to 'Edit', '#', data: { action: 'click->post#edit' } %>
