@@ -21,7 +21,7 @@
   <div data-post-target="form" style="display: none;">
     <%= simple_form_for(@post, remote: true) do |f| %>
       <%= f.input :title, label: 'Title' %>
-      <%= f.input :content, label: 'Content' %>
+      <%= f.rich_text_area :content %>
       <%= f.input :link, label: 'Link' %>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.association :post_category, label: 'Post Category', collection: PostCategory.all, prompt: 'Select a Category' %>
