@@ -1,0 +1,34 @@
+<section style="background-color: #5b9279;">
+  <div class="container home-blog-title">
+    <h1>New blog posts from me:</h1>
+    <%= link_to "Checkout all posts ->", blog_path %>
+  </div>
+  <div class="container home-blog-posts">
+    <div class="posts">
+      <% @recent_posts.each do |post| %>
+        <div class="post">
+          <div class="post-content">
+            <div class="post-info">
+              <h3><%= link_to post.title, post_path(post) %></h3>
+              <p><%= post.content.truncate(250) %></p>
+              <div class="post-data">
+                <i class="fa-solid fa-calendar"></i> • <%= post.created_at.strftime("%b %Y") %>
+                <i class="fa-solid fa-stopwatch"></i> • <%= post.content.reading_time :format => :approx %>
+                <% post.tags.each do |tag| %>
+                  <%= link_to tag.name, tag_path(tag.name), class:"btn btn-info tag-button" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="post-image">
+              <% post.photos.each do |photo| %>
+                <% if photo.present? %>
+                  <%= link_to cl_image_tag(photo.key, height: 134, width: 200, crop: :fill), post_path(post) %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
