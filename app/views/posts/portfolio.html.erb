@@ -9,7 +9,7 @@
         <div class="post-image">
             <% post.photos.each do |photo| %>
               <% if photo.present? %>
-                <%= cl_image_tag photo.key, height: 268, width: 400, crop: :fill %>
+                <%= link_to cl_image_tag(photo.key, height: 268, width: 400, crop: :fill), post_path(post) %>
               <% end %>
             <% end %>
         </div>

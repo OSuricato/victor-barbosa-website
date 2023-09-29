@@ -2,13 +2,12 @@
 <div class="container" data-controller="post">
   <div data-post-target="display">
     <h1><%= @post.title %></h1>
-    <p>Posted by <%= @post.user.email %> on <%= @post.created_at.strftime("%B %d, %Y") %></p>
+    <p><i class="fa-solid fa-calendar"></i> <%= @post.created_at.strftime("%B %d, %Y") %></p>
     <p><%= link_to @post.link, @post.link %></p>
     <% @post.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
     <p><%= @post.content %></p>
-    <p>Category: <%= @post.post_category.name %></p>
 
     <% if policy(@post).edit? %>
       <%= link_to 'Edit', '#', data: { action: 'click->post#edit' } %>
@@ -30,34 +29,47 @@
     <% end %>
   </div>
 
-  <h2>Comments</h2>
+  <div class="container" data-controller="comments">
+    <button data-action="click->comments#toggle" class="btn btn-primary">Responses</button>
 
-  <%= simple_form_for([@post, Comment.new]) do |f| %>
-    <%= f.input :content, label: 'New Comment' %>
-    <%= f.button :submit, class:"btn btn-primary" %>
-  <% end %>
+    <div data-comments-target="section" style="display: none;">
+      <h3>Comments</h3>
 
-  <% @post.comments.each do |comment| %>
-    <div data-controller="comment">
-      <div data-comment-target="display" id="comment-<%= comment.id %>">
-        <p><%= comment.content %></p>
-        <p>Posted by <%= comment.user.email %> on <%= comment.created_at.strftime("%B %d, %Y") %></p>
+      <%= simple_form_for([@post, Comment.new]) do |f| %>
+        <div class="form-group">
+          <%= f.input :content, label: 'New Comment', input_html: { class: 'form-control' } %>
+        </div>
+        <div class="form-group text-right">
+          <%= f.button :submit, 'Create Comment', class:"btn btn-primary" %>
+        </div>
+      <% end %>
 
-        <% if policy(comment).edit? %>
-          <%= link_to 'Edit', '#', data: { action: 'click->comment#edit' } %>
-        <% end %>
+      <% @post.comments.each do |comment| %>
+        <div class="comment" data-controller="comment">
+          <div data-comment-target="display" id="comment-<%= comment.id %>">
+            <div class="user-info">
+              <div class="user-name"><%= comment.user.email %></div>
+              <div class="comment-content"><%= comment.content %></div>
+              <div class="comment-date"><%= comment.created_at.strftime("%B %d, %Y") %></div>
+            </div>
 
-        <% if policy(comment).destroy? %>
-          <%= link_to 'Delete', post_comment_path(@post, comment), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-        <% end %>
-      </div>
+            <% if policy(comment).edit? %>
+              <%= link_to 'Edit', '#', data: { action: 'click->comment#edit' } %>
+            <% end %>
 
-      <div data-comment-target="form" style="display: none;">
-        <%= simple_form_for([@post, comment], remote: true) do |f| %>
-          <%= f.input :content, label: 'Edit Comment' %>
-          <%= f.button :submit, 'Update Comment' %>
-        <% end %>
-      </div>
+            <% if policy(comment).destroy? %>
+              <%= link_to 'Delete', post_comment_path(@post, comment), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <% end %>
+          </div>
+
+          <div data-comment-target="form" style="display: none;">
+            <%= simple_form_for([@post, comment], remote: true) do |f| %>
+              <%= f.input :content, label: 'Edit Comment' %>
+              <%= f.button :submit, 'Update Comment' %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

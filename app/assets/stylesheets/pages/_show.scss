@@ -1,0 +1,23 @@
+.comment {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.comment .user-info {
+  margin-bottom: 10px;
+}
+
+.comment .user-info .user-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.comment .user-info .comment-content {
+  margin-bottom: 10px;
+}
+
+.comment .user-info .comment-date {
+  font-size: 0.8em;
+  color: #888;
+}
