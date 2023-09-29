@@ -2,14 +2,19 @@
 <div class="container" data-controller="post">
   <div data-post-target="display">
     <h1><%= @post.title %></h1>
-    <p><i class="fa-solid fa-calendar"></i> <%= @post.created_at.strftime("%B %d, %Y") %></p>
-    <p><%= link_to @post.link, @post.link %></p>
+    <div class="post-head-info">
+      <p><i class="fa-solid fa-calendar"></i> <%= @post.created_at.strftime("%B %d, %Y") %>  </p>
+      <p><i class="fas fa-link"></i> <%= link_to @post.link, @post.link %></p>
+    </div>
     <% if @post.video_url.present? %>
-      <iframe width="560" height="315" src="<%= @post.video_url %>" frameborder="0" allowfullscreen></iframe>
+      <div class="video-container">
+        <iframe src="<%= @post.video_url %>" frameborder="0" allowfullscreen></iframe>
+      </div>
     <% end %>
-    <% @post.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
+
+    <%# <% @post.photos.each do |photo| %>
+      <%# <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <%# <% end %>
     <%= @post.content.body %>
 
     <% if policy(@post).edit? %>
