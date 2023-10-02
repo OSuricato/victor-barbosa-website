@@ -16,7 +16,9 @@
         <div class="post-info">
           <p><%= post.content.body.to_plain_text.truncate(250) if post.content.body.present? %></p>
           <div class="post-data">
-            <i class="fa-solid fa-calendar"></i> • <%= post.created_at.strftime("%b %Y") %>
+            <div class="post-created-at">
+              <i class="fa-solid fa-calendar"></i> • <%= post.created_at.strftime("%b %Y") %>
+            </div>
             <% post.tags.each do |tag| %>
               <%= link_to tag.name, tag_path(tag.name), class:"btn btn-info tag-button" %>
             <% end %>
