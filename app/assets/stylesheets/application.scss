@@ -30,3 +30,17 @@ footer {
 a {
   text-decoration: none;
 }
+
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 20vw;
+}
+
+@media (max-width: 991px) {
+  section {
+    padding: 0;
+  }
+}

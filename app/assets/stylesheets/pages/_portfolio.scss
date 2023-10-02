@@ -7,7 +7,7 @@
 }
 
 .posts {
-  width: 70%;
+  width: 100%;
   overflow: auto;
   height: 100vh; /* Adjust this value as needed */
 }
@@ -33,8 +33,6 @@
 
 
 .tags {
-  position: sticky;
-  top: 0; /* Adjust this value according to the height of your navbar */
   width: 30%;
   margin-left: 20px;
 }
@@ -43,9 +41,9 @@
 .post-data {
   display: flex;
   align-items: center;
-  a {
-    margin-left: 4px;
-  }
+//   a {
+//     margin-left: 4px;
+//   }
 }
 
 .tag-button {
@@ -61,7 +59,8 @@
 
   .tags {
     position: static;
+    width: 100%;
+    margin-bottom: 48px;
+    margin-left: 0;
   }
 }
-
-

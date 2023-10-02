@@ -1,4 +1,5 @@
 .navbar {
+  z-index: 9999;
   position: sticky;
   background-color: #000000;
   a {
@@ -29,12 +30,16 @@
   }
 }
 
-section {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px 20vw;
+.navbar-toggler-icon {
+  background-color: #eae6e5;
+}
+
+.navbar-toggler {
+  background-color: #eae6e5;
+}
+
+.btn-close {
+  background-color: #eae6e5;
 }
 
 .custom-shape-divider-top-1695754255 {
@@ -55,4 +60,15 @@ section {
 
 .custom-shape-divider-top-1695754255 .shape-fill {
   fill: #1A7F5F;
+}
+
+@media (max-width: 991px) {
+  .custom-shape-divider-top-1695754255 {
+
+  }
+
+}
+
+.divider {
+  margin-bottom: 24px;
 }

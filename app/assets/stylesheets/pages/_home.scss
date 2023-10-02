@@ -5,6 +5,12 @@
   flex-wrap: wrap;
 }
 
+@media (max-width: 600px) {
+  .home-display {
+    margin-top: 32px;
+  }
+}
+
 .home-info, .home-image {
   flex: 1 0 20em;
   margin: 1em;
@@ -111,11 +117,17 @@
 
 .home-story {
   color: #fff;
+  color: #fff;
   h2 {
     font-weight: bold;
   }
 }
 
+@media (max-width: 991px) {
+  .home-story {
+    margin-bottom: 50px;
+  }
+}
 // Transition into recent blog posts
 
 .custom-shape-divider-bottom-1695777949 {
