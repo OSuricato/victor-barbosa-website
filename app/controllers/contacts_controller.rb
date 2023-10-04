@@ -6,11 +6,11 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    if verify_recaptcha(model: @contact) && @contact.save
+    if @contact.save && verify_recaptcha(model: @contact)
       ContactMailer.contact_email(@contact).deliver_now
       redirect_to new_contact_path, notice: "Message sent."
     else
-      flash.now[:error] = "reCAPTCHA verification failed. Please try again."
+      flash.now[:error] = "There was an error with your submission. Please try again."
       render :new
     end
   end
