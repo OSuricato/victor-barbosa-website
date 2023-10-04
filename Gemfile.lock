@@ -256,6 +256,7 @@ GEM
     rdoc (6.5.0)
       psych (>= 4.0.0)
     readingtime (0.4.0)
+    recaptcha (5.15.0)
     regexp_parser (2.8.1)
     reline (0.3.8)
       io-console (~> 0.5)
@@ -351,6 +352,7 @@ DEPENDENCIES
   pundit
   rails (~> 7.0.8)
   readingtime
+  recaptcha
   sassc-rails
   selenium-webdriver
   simple_form!
