@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    if @contact.save
+    if verify_captcha(model: @contact) && @contact.save
       ContactMailer.contact_email(@contact).deliver_now
       redirect_to new_contact_path, notice: "Message sent."
     else

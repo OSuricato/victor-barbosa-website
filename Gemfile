@@ -96,3 +96,6 @@ gem 'omniauth-rails_csrf_protection'
 gem 'pagy'
 
 gem "readingtime"
+
+# For verifying contact messages
+gem 'recaptcha', require: 'recaptcha/rails'
