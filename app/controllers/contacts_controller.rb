@@ -10,6 +10,7 @@ class ContactsController < ApplicationController
       ContactMailer.contact_email(@contact).deliver_now
       redirect_to new_contact_path, notice: "Message sent."
     else
+      flash.now[:error] = "reCAPTCHA verification failed. Please try again."
       render :new
     end
   end
